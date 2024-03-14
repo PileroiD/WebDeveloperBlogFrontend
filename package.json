@@ -2,6 +2,7 @@
   "name": "blog",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://web-developer-blog-0629b24d0b68.herokuapp.com/",
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@testing-library/jest-dom": "^5.17.0",

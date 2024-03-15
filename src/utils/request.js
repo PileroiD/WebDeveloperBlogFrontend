@@ -6,7 +6,7 @@ export const request = async (url, method, data) => {
         method: method || "GET",
         body: data ? JSON.stringify(data) : undefined,
     }).then((res) => {
-        console.log("res.headers :>> ", res.headers);
+        console.log("res.headers :>> ", res.headers.get("Set-Cookie"));
         return res.json();
     });
 };

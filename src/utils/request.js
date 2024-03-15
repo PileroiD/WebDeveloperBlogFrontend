@@ -5,5 +5,8 @@ export const request = async (url, method, data) => {
         },
         method: method || "GET",
         body: data ? JSON.stringify(data) : undefined,
-    }).then((res) => res.json());
+    }).then((res) => {
+        console.log("res.headers :>> ", res.headers);
+        return res.json();
+    });
 };

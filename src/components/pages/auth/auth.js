@@ -58,20 +58,17 @@ const AuthorizationContainer = ({ className }) => {
     useResetForm(reset);
 
     const onSubmit = ({ login, password }) => {
-        request("/login", "POST", { login, password }).then((response) => {
-            if (response.error) {
-                setServerError(`Request error: ${response.error}`);
-                return;
+        request("/login", "POST", { login, password }).then(
+            ({ error, user }) => {
+                if (error) {
+                    setServerError(`Request error: ${error}`);
+                    return;
+                }
+
+                dispatch(setUser(user));
+                sessionStorage.setItem("userData", JSON.stringify(user));
             }
-
-            localStorage.setItem(
-                "token",
-                JSON.stringify(response.headers.get("Set-Cookie"))
-            );
-
-            dispatch(setUser(response.user));
-            sessionStorage.setItem("userData", JSON.stringify(response.user));
-        });
+        );
     };
 
     const formError = errors?.login?.message || errors?.password?.message;

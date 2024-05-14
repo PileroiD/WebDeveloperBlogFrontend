@@ -3,6 +3,7 @@ export const request = async (url, method, data) => {
         headers: {
             "Content-type": "application/json",
         },
+        credentials: "include",
         method: method || "GET",
         body: data ? JSON.stringify(data) : undefined,
     }).then((res) => {
